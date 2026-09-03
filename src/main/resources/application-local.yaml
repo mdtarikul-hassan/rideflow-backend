@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    com.rideflow: DEBUG
+    org.hibernate.SQL: DEBUG
+
+rideflow:
+  cookie:
+    secure: false # allow the refresh cookie over plain HTTP on localhost
+  otp:
+    expose-code-in-response: true # local dev only - see OtpService javadoc
+
+# Local-only default so `./mvnw spring-boot:run -Dspring-boot.run.profiles=local`
+# works out of the box. Never use this value anywhere but local dev.
+JWT_SECRET: ${JWT_SECRET:local-dev-only-secret-key-change-me-32bytes+}
