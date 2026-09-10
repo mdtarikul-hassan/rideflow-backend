@@ -100,6 +100,21 @@ public class User {
         return user;
     }
 
+    public static User newBackOffice(String email, String password, String mobileNumber,
+                                     Role role, boolean mfaEnabled) {
+        User user = new User();
+        user.email = email;
+        user.password = password;
+        user.mobileNumber = mobileNumber;
+        user.status = UserStatus.ACTIVE;
+        user.profileComplete = true;
+        user.mfaEnabled = mfaEnabled;
+        user.roles.add(role);
+        Instant now = Instant.now();
+        user.createdAt = now;
+        user.updatedAt = now;
+        return user;
+    }
 
     public void completeProfile(String firstName, String lastName, String email){
         this.firstName = firstName;
